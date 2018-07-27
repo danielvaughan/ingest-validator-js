@@ -1,0 +1,16 @@
+service: ingest-validator
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  stage: dev
+  region: us-east-1
+
+functions:
+  validate:
+    handler: src/handler.handleValidate
+    events:
+    - http:
+        path: validate
+        method: post
+        cors: true
